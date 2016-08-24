@@ -1,4 +1,5 @@
 RootView = require 'views/core/RootView'
+utils = require 'core/utils'
 
 module.exports = class MarkdownResourceView extends RootView
   id: 'markdown-resource-view'
@@ -16,3 +17,21 @@ module.exports = class MarkdownResourceView extends RootView
             '<a class="pull-right btn btn-md btn-navy back-to-top" href="#logo-img">Back to top</a></h5'
 
       @render()
+      
+
+  afterRender: ->
+    super()
+    @$el.find('pre>code').each ->
+      els = $(@)
+      c = els.parent()
+      lang = els.attr('class')
+      if lang
+        lang = lang.replace(/^lang-/,'')
+      else
+        lang = 'python'
+
+      aceEditor = utils.initializeACE c[0], lang
+      aceEditor.setShowInvisibles false
+      aceEditor.setBehavioursEnabled false
+      aceEditor.setAnimatedScroll false
+      aceEditor.$blockScrolling = Infinity
