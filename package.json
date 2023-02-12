@@ -198,7 +198,7 @@
     "karma-firefox-launcher": "^2.1.2",
     "karma-jasmine": "^1.1.2",
     "mini-css-extract-plugin": "^2.6.0",
-    "nodemon": "^2.0.15",
+    "nodemon": "^2.0.20",
     "pg": "^6.1.2",
     "portfinder": "^1.0.28",
     "pug": "^2.0.3",
